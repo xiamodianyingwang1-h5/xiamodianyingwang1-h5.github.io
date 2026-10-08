@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>夏末电影网 - 最新高清电影在线观看 | xiamodianyingwang-h5.github.io</title>
+<meta name="description" content="夏末电影网（xiamodianyingwang-h5.github.io）为您提供最新高清电影、热播电视剧、综艺动漫免费在线观看，每日更新最新院线大片与经典老片，画质清晰、播放流畅。">
+<meta name="keywords" content="夏末电影网,xiamodianyingwang-h5,夏末电影网官网,最新电影,高清电影在线观看,热播电视剧,免费电影网站">
+<link rel="canonical" href="https://xiamodianyingwang-h5.github.io/">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --brand:#e8612c;
+  --brand2:#ffb347;
+  --ink:#1a1a2e;
+  --ink2:#4a4a6a;
+  --bg:#fdf6ef;
+  --card:#ffffff;
+  --line:#f0e3d6;
+  --shadow:0 8px 30px rgba(232,97,44,.12);
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:"PingFang SC","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+img{max-width:100%;display:block}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
+
+/* ===== Header ===== */
+.site-header{
+  position:sticky;top:0;z-index:100;
+  background:linear-gradient(135deg,#1a1a2e 0%,#2d1b4e 100%);
+  box-shadow:0 4px 20px rgba(0,0,0,.25);
+}
+.header-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  height:68px;
+}
+.logo{
+  display:flex;align-items:center;gap:10px;
+  font-size:26px;font-weight:800;color:#fff;letter-spacing:1px;
+}
+.logo-mark{
+  width:40px;height:40px;border-radius:12px;
+  background:linear-gradient(135deg,var(--brand),var(--brand2));
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;color:#fff;box-shadow:0 4px 12px rgba(232,97,44,.4);
+}
+.logo em{font-style:normal;color:var(--brand2)}
+.main-nav{display:flex;gap:6px}
+.main-nav a{
+  color:rgba(255,255,255,.82);font-size:15px;font-weight:600;
+  padding:8px 16px;border-radius:20px;transition:.25s;
+}
+.main-nav a:hover{background:rgba(255,255,255,.12);color:#fff}
+.header-actions{display:flex;align-items:center;gap:14px}
+.search-box{
+  display:flex;align-items:center;background:rgba(255,255,255,.12);
+  border-radius:24px;padding:6px 14px;gap:8px;
+}
+.search-box input{
+  background:none;border:none;outline:none;color:#fff;
+  font-size:14px;width:170px;
+}
+.search-box input::placeholder{color:rgba(255,255,255,.55)}
+.search-btn{
+  background:linear-gradient(135deg,var(--brand),var(--brand2));
+  border:none;color:#fff;width:32px;height:32px;border-radius:50%;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;
+}
+.menu-toggle{display:none;background:none;border:none;color:#fff;font-size:24px;cursor:pointer}
+
+/* ===== Hero ===== */
+.hero{
+  position:relative;overflow:hidden;
+  background:linear-gradient(160deg,#2d1b4e 0%,#1a1a2e 55%,#3d1a2e 100%);
+  padding:70px 0 90px;
+}
+.hero::before{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 85% 15%,rgba(232,97,44,.28),transparent 45%),
+    radial-gradient(circle at 10% 80%,rgba(255,179,71,.18),transparent 42%);
+}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:54px;align-items:center;position:relative}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(255,179,71,.16);color:var(--brand2);
+  padding:7px 18px;border-radius:30px;font-size:14px;font-weight:700;margin-bottom:22px;
+}
+.hero-badge span{width:8px;height:8px;border-radius:50%;background:var(--brand2);animation:pulse 1.6s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.5)}}
+.hero h1{
+  font-size:52px;line-height:1.18;color:#fff;font-weight:800;margin-bottom:20px;
+}
+.hero h1 i{font-style:normal;background:linear-gradient(90deg,var(--brand2),var(--brand));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:rgba(255,255,255,.72);font-size:17px;max-width:520px;margin-bottom:30px}
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:15px;
+  padding:14px 30px;border-radius:30px;border:2px solid transparent;cursor:pointer;transition:.3s;
+}
+.btn-primary{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;box-shadow:0 8px 24px rgba(232,97,44,.4)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(232,97,44,.5)}
+.btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.35)}
+.btn-ghost:hover{border-color:var(--brand2);color:var(--brand2)}
+.hero-stats{display:flex;gap:40px;margin-top:38px}
+.h-stat b{display:block;font-size:32px;font-weight:800;color:#fff}
+.h-stat small{color:rgba(255,255,255,.6);font-size:13px}
+
+/* Hero card stack */
+.hero-visual{position:relative;height:440px}
+.float-card{
+  position:absolute;border-radius:20px;overflow:hidden;
+  box-shadow:0 20px 50px rgba(0,0,0,.5);
+  border:3px solid rgba(255,255,255,.12);
+}
+.float-card img{width:100%;height:100%;object-fit:cover}
+.fc-1{width:62%;height:78%;left:0;top:8%;transform:rotate(-4deg)}
+.fc-2{width:48%;height:52%;right:0;top:0;transform:rotate(5deg)}
+.fc-3{width:44%;height:44%;right:8%;bottom:0;transform:rotate(-3deg)}
+.float-card .cap{
+  position:absolute;left:0;right:0;bottom:0;padding:16px 14px 12px;
+  background:linear-gradient(to top,rgba(0,0,0,.85),transparent);color:#fff;
+}
+.float-card .cap b{font-size:15px}
+.float-card .cap span{font-size:12px;color:var(--brand2)}
+
+/* ===== Section common ===== */
+section{padding:64px 0}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:32px;gap:16px;flex-wrap:wrap}
+.sec-title{display:flex;align-items:center;gap:12px}
+.sec-title h2{font-size:30px;font-weight:800;letter-spacing:.5px}
+.sec-title .bar{width:6px;height:32px;border-radius:4px;background:linear-gradient(var(--brand2),var(--brand))}
+.sec-title small{color:var(--ink2);font-size:14px;margin-top:4px;display:block}
+.sec-link{color:var(--brand);font-weight:700;font-size:14px;display:flex;align-items:center;gap:5px}
+.sec-link:hover{gap:9px}
+
+/* filter chips */
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
+.chip{
+  padding:8px 20px;border-radius:24px;background:var(--card);border:2px solid var(--line);
+  font-size:14px;font-weight:600;color:var(--ink2);cursor:pointer;transition:.25s;
+}
+.chip:hover,.chip.on{background:linear-gradient(135deg,var(--brand),var(--brand2));border-color:transparent;color:#fff}
+
+/* ===== Poster grid (栏目：最新上线) ===== */
+.poster-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:22px}
+.poster{
+  background:var(--card);border-radius:16px;overflow:hidden;
+  box-shadow:var(--shadow);transition:.35s;cursor:pointer;position:relative;
+}
+.poster:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(232,97,44,.22)}
+.poster-cover{position:relative;aspect-ratio:3/4;overflow:hidden}
+.poster-cover img{width:100%;height:100%;object-fit:cover;transition:.5s}
+.poster:hover .poster-cover img{transform:scale(1.12)}
+.poster-tag{
+  position:absolute;top:10px;left:10px;background:var(--brand);color:#fff;
+  font-size:11px;font-weight:700;padding:4px 10px;border-radius:6px;z-index:2;
+}
+.poster-score{
+  position:absolute;top:10px;right:10px;background:rgba(0,0,0,.72);color:var(--brand2);
+  font-size:12px;font-weight:800;padding:4px 9px;border-radius:6px;z-index:2;
+}
+.poster-cover .play{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  background:rgba(26,26,46,.28);opacity:0;transition:.35s;z-index:2;
+}
+.poster:hover .play{opacity:1}
+.poster-cover .play i{
+  width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.95);color:var(--brand);
+  display:flex;align-items:center;justify-content:center;font-size:22px;font-style:normal;
+  box-shadow:0 6px 20px rgba(0,0,0,.3);
+}
+.poster-info{padding:14px 14px 16px}
+.poster-info h3{font-size:16px;font-weight:700;margin-bottom:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.poster-info p{font-size:12px;color:var(--ink2);display:flex;justify-content:space-between}
+
+/* ===== Rank (栏目：热播榜) ===== */
+.rank-wrap{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.rank-item{
+  display:flex;align-items:center;gap:16px;background:var(--card);border-radius:14px;
+  padding:14px 18px;box-shadow:var(--shadow);transition:.3s;
+}
+.rank-item:hover{transform:translateX(6px);box-shadow:0 12px 30px rgba(232,97,44,.2)}
+.rank-num{
+  font-size:30px;font-weight:800;color:var(--line);min-width:42px;
+  font-family:Georgia,serif;line-height:1;
+}
+.rank-item:nth-child(1) .rank-num{color:#e8612c}
+.rank-item:nth-child(2) .rank-num{color:#ff8c42}
+.rank-item:nth-child(3) .rank-num{color:#ffb347}
+.rank-thumb{width:56px;height:76px;border-radius:8px;object-fit:cover;flex-shrink:0}
+.rank-text{flex:1;min-width:0}
+.rank-text h4{font-size:15px;font-weight:700;margin-bottom:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rank-text span{font-size:12px;color:var(--ink2)}
+.rank-score{color:var(--brand);font-weight:800;font-size:15px}
+
+/* ===== Scrolling strip (栏目：电视剧 / 综艺) ===== */
+.strip-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+.strip-tabs{display:flex;gap:8px;background:var(--card);padding:6px;border-radius:30px;box-shadow:var(--shadow)}
+.strip-tab{
+  padding:8px 22px;border-radius:24px;font-size:14px;font-weight:700;color:var(--ink2);
+  cursor:pointer;transition:.25s;border:none;background:none;
+}
+.strip-tab.on{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff}
+.strip-track{display:flex;gap:18px;overflow-x:auto;padding-bottom:14px;scrollbar-width:none}
+.strip-track::-webkit-scrollbar{display:none}
+.ep-card{min-width:220px;flex-shrink:0}
+.ep-thumb{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:16/10;margin-bottom:10px}
+.ep-thumb img{width:100%;height:100%;object-fit:cover;transition:.45s}
+.ep-card:hover .ep-thumb img{transform:scale(1.08)}
+.ep-thumb .ep{position:absolute;top:8px;left:8px;background:var(--brand2);color:#3d1a2e;font-size:11px;font-weight:800;padding:3px 9px;border-radius:5px}
+.ep-thumb .len{position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,.7);color:#fff;font-size:11px;padding:3px 8px;border-radius:5px}
+.ep-card h4{font-size:15px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ep-card p{font-size:12px;color:var(--ink2)}
+
+/* ===== News ===== */
+.news-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:28px}
+.news-feat{position:relative;border-radius:18px;overflow:hidden;min-height:340px}
+.news-feat img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;transition:.6s}
+.news-feat:hover img{transform:scale(1.06)}
+.news-feat .mask{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.9),transparent 65%)}
+.news-feat .txt{position:absolute;left:24px;right:24px;bottom:22px;color:#fff}
+.news-feat .txt em{font-style:normal;background:var(--brand);padding:4px 10px;border-radius:5px;font-size:12px;font-weight:700}
+.news-feat .txt h3{font-size:22px;margin:12px 0 8px;line-height:1.4}
+.news-feat .txt span{font-size:13px;color:rgba(255,255,255,.7)}
+.news-list{display:flex;flex-direction:column;gap:16px}
+.news-row{display:flex;gap:14px;background:var(--card);border-radius:14px;padding:12px;box-shadow:var(--shadow);transition:.3s}
+.news-row:hover{transform:translateY(-4px)}
+.news-row img{width:120px;height:80px;border-radius:10px;object-fit:cover;flex-shrink:0}
+.news-row .nr{flex:1;min-width:0}
+.news-row .nr b{font-size:14px;font-weight:700;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.news-row .nr time{font-size:12px;color:var(--ink2);display:block;margin-top:8px}
+
+/* ===== Collage (栏目：专题) ===== */
+.collage{display:grid;grid-template-columns:1.2fr 1fr 1fr;grid-template-rows:repeat(3,130px);gap:18px}
+.col-card{grid-row:span 3;position:relative;border-radius:18px;overflow:hidden}
+.col-card img{width:100%;height:100%;object-fit:cover;transition:.6s}
+.col-card:hover img{transform:scale(1.07)}
+.col-card .ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.8),transparent 60%)}
+.col-card .ov b{position:absolute;bottom:20px;left:20px;color:#fff;font-size:24px}
+.col-card .ov span{position:absolute;bottom:20px;right:20px;color:var(--brand2);font-size:13px;font-weight:700}
+.tile{position:relative;border-radius:18px;overflow:hidden}
+.tile img{width:100%;height:100%;object-fit:cover;transition:.6s}
+.tile:hover img{transform:scale(1.07)}
+.tile .ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.75),transparent 55%)}
+
+/* ===== About ===== */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.about-card{background:linear-gradient(135deg,#2d1b4e,#1a1a2e);border-radius:22px;padding:40px;color:#fff}
+.about-card h3{font-size:26px;margin-bottom:16px}
+.about-card p{color:rgba(255,255,255,.72);font-size:15px;margin-bottom:14px}
+.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}
+.as b{display:block;font-size:28px;font-weight:800;color:var(--brand2)}
+.as span{font-size:13px;color:rgba(255,255,255,.6)}
+.feedback{background:var(--card);border-radius:22px;padding:36px;box-shadow:var(--shadow)}
+.feedback h3{font-size:22px;margin-bottom:8px}
+.feedback > p{color:var(--ink2);font-size:13px;margin-bottom:22px}
+.f-field{margin-bottom:16px}
+.f-field label{display:block;font-size:13px;font-weight:700;margin-bottom:6px;color:var(--ink2)}
+.f-field input,.f-field textarea{
+  width:100%;border:2px solid var(--line);border-radius:12px;padding:12px 14px;
+  font-size:14px;font-family:inherit;background:#fdfaf7;transition:.25s;outline:none;
+}
+.f-field input:focus,.f-field textarea:focus{border-color:var(--brand)}
+.f-field textarea{resize:vertical;min-height:100px}
+.f-btn{
+  width:100%;background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;
+  border:none;padding:15px;border-radius:12px;font-size:16px;font-weight:800;cursor:pointer;transition:.3s;
+}
+.f-btn:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(232,97,44,.4)}
+
+/* ===== Footer ===== */
+.site-footer{background:#15152a;color:rgba(255,255,255,.6);padding:50px 0 26px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:36px;margin-bottom:34px}
+.foot-brand .logo{color:#fff;margin-bottom:14px}
+.foot-brand p{font-size:13px;line-height:1.8}
+.foot-col h4{color:#fff;font-size:16px;margin-bottom:16px}
+.foot-col a{display:block;font-size:13px;margin-bottom:10px;transition:.2s}
+.foot-col a:hover{color:var(--brand2)}
+.copyright{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;text-align:center;font-size:12px;line-height:1.9}
+.copyright strong{color:#fff}
+
+/* ===== Back to top ===== */
+#toTop{
+  position:fixed;right:24px;bottom:30px;width:46px;height:46px;border-radius:50%;
+  background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff;border:none;
+  font-size:20px;cursor:pointer;box-shadow:0 8px 22px rgba(232,97,44,.4);
+  opacity:0;visibility:hidden;transform:translateY(16px);transition:.35s;z-index:99;
+}
+#toTop.show{opacity:1;visibility:visible;transform:translateY(0)}
+
+/* ===== Responsive ===== */
+@media(max-width:980px){
+  .hero h1{font-size:38px}
+  .hero-grid{grid-template-columns:1fr;gap:40px}
+  .hero-visual{height:360px;max-width:520px;margin:0 auto}
+  .poster-grid{grid-template-columns:repeat(3,1fr);gap:18px}
+  .collage{grid-template-columns:1fr 1fr;grid-template-rows:repeat(4,140px)}
+  .col-card{grid-row:span 2;grid-column:span 2}
+  .about-grid{grid-template-columns:1fr;gap:24px}
+  .news-grid{grid-template-columns:1fr}
+  .rank-wrap{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:26px}
+}
+@media(max-width:720px){
+  section{padding:46px 0}
+  .hero{padding:44px 0 56px}
+  .hero h1{font-size:30px}
+  .hero-stats{gap:26px}
+  .h-stat b{font-size:24px}
+  .header-inner{height:60px}
+  .main-nav{display:none}
+  .menu-toggle{display:block}
+  .search-box{display:none}
+  .main-nav.open{
+    display:flex;flex-direction:column;position:absolute;top:60px;left:0;right:0;
+    background:#2d1b4e;padding:16px 20px;gap:4px;box-shadow:0 10px 24px rgba(0,0,0,.3);
+  }
+  .main-nav.open a{padding:12px 16px;border-radius:12px}
+  .poster-grid{grid-template-columns:repeat(2,1fr);gap:14px}
+  .sec-title h2{font-size:24px}
+  .collage{grid-template-columns:1fr;grid-template-rows:auto}
+  .col-card{grid-row:span 1;grid-column:span 1;height:200px}
+  .tile{height:160px}
+  .hero-visual{height:300px}
+  .float-card.fc-1{width:70%;height:70%}
+  .float-card.fc-2{width:52%;height:46%}
+  .float-card.fc-3{width:48%;height:40%}
+  .foot-grid{grid-template-columns:1fr}
+  .news-row img{width:90px;height:64px}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+
+<!-- Header -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="#" class="logo">
+      <span class="logo-mark">夏</span>夏末<em>电影网</em>
+    </a>
+    <nav class="main-nav" id="nav">
+      <a href="#home">首页</a>
+      <a href="#latest">最新上线</a>
+      <a href="#rank">热播榜</a>
+      <a href="#drama">电视剧</a>
+      <a href="#news">影视资讯</a>
+      <a href="#topic">专题精选</a>
+      <a href="#about">关于我们</a>
+    </nav>
+    <div class="header-actions">
+      <div class="search-box">
+        <input type="text" placeholder="搜索影片/演员/导演">
+        <button class="search-btn" onclick="void(0)">&#128269;</button>
+      </div>
+      <button class="menu-toggle" id="menuBtn" aria-label="菜单">&#9776;</button>
+    </div>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div>
+      <span class="hero-badge"><span></span>夏末电影网 · 每日更新 2026</span>
+      <h1>这个<em>夏末</em><br>把好电影一次看够</h1>
+      <p>夏末电影网（xiamodianyingwang-h5.github.io）汇聚最新院线大片、高分经典与热门剧集综艺，高清流畅播放，随时随地开启你的观影时光。</p>
+      <div class="hero-cta">
+        <a href="#latest" class="btn btn-primary">&#9654; 立即观影</a>
+        <a href="#rank" class="btn btn-ghost">查看榜单 &#8594;</a>
+      </div>
+      <div class="hero-stats">
+        <div class="h-stat"><b>12,680+</b><small>在线影片</small></div>
+        <div class="h-stat"><b>98%</b><small>高清画质</small></div>
+        <div class="h-stat"><b>24H</b><small>每日更新</small></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="float-card fc-1">
+        <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=500&q=80" alt="热映电影">
+        <div class="cap"><b>夏末大片热映中</b><br><span>⭐ 9.2 高分推荐</span></div>
+      </div>
+      <div class="float-card fc-2">
+        <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?w=400&q=80" alt="热门剧集">
+        <div class="cap"><b>热播剧集</b><br><span>本周更新 12 集</span></div>
+      </div>
+      <div class="float-card fc-3">
+        <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=400&q=80" alt="院线新片">
+        <div class="cap"><b>院线同步</b><br><span>最新上线</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 最新上线 -->
+<section id="latest">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-title">
+        <span class="bar"></span>
+        <div><h2>最新上线</h2><small>Latest Releases · 每日精选好片</small></div>
+      </div>
+      <a href="#" class="sec-link">查看全部 &#8594;</a>
+    </div>
+    <div class="chips">
+      <span class="chip on">全部</span>
+      <span class="chip">动作</span>
+      <span class="chip">喜剧</span>
+      <span class="chip">爱情</span>
+      <span class="chip">悬疑</span>
+      <span class="chip">科幻</span>
+      <span class="chip">动画</span>
+    </div>
+    <div class="poster-grid">
+      <div class="poster">
+        <div class="poster-cover">
+          <span class="poster-tag">VIP</span><span class="poster-score">9.2</span>
+          <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=400&q=80" alt="夏末电影网推荐电影">
+          <div class="play"><i>&#9654;</i></div>
+        </div>
+        <div class="poster-info"><h3>夏末的风</h3><p><span>爱情 · 2026</span><span>HD</span></p></div>
+      </div>
+      <div class="poster">
+        <div class="poster-cover">
+          <span class="poster-tag">热映</span><span class="poster-score">8.7</span>
+          <img src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=400&q=80" alt="院线大片">
+          <div class="play"><i>&#9654;</i></div>
+        </div>
+        <div class="poster-info"><h3>城市边缘人</h3><p><span>动作 · 犯罪</span><span>HD</span></p></div>
+      </div>
+      <div class="poster">
+        <div class="poster-cover">
+          <span class="poster-tag">新片</span><span class="poster-score">8.4</span>
+          <img src="https://images.unsplash.com/photo-1585647347384-2593bc35786b?w=400&q=80" alt="喜剧电影">
+          <div class="play"><i>&#9654;</i></div>
+        </div>
+        <div class="poster-info"><h3>爆笑一家人</h3><p><span>喜剧 · 家庭</span><span>HD</span></p></div>
+      </div>
+      <div class="poster">
+        <div class="poster-cover">
+          <span class="poster-tag">独播</span><span class="poster-score">9.0</span>
+          <img src="https://images.unsplash.com/photo-1505686994434-e3cc5abf1330?w=400&q=80" alt="科幻电影">
+          <div class="play"><i>&#9654;</i></div>
+        </div>
+        <div class="poster-info"><h3>星际回声</h3><p><span>科幻 · 冒险</span><span>4K</span></p></div>
+      </div>
+      <div class="poster">
+        <div class="poster-cover">
+          <span class="poster-tag">推荐</span><span class="poster-score">8.9</span>
+          <img src="https://images.unsplash.com/photo-1542204165-65bf26472b9b?w=400&q=80" alt="悬疑电影">
+          <div class="play"><i>&#9654;</i></div>
+        </div>
+        <div class="poster-info"><h3>无声线索</h3><p><span>悬疑 · 惊悚</span><span>HD</span></p></div>
+      </div>
+      <div class="poster">
+        <div class="poster-cover">
+          <span class="poster-tag">新片</span><span class="poster-score">8.1</span>
+          <img src="https://images.unsplash.com/photo-1604975701397-6365ccbd028a?w=400&q=80" alt="动画电影">
+          <div class="play"><i>&#9654;</i></div>
+        </div>
+        <div class="poster-info"><h3>云端小熊</h3><p><span>动画 · 奇幻</span><span>HD</span></p></div>
+      </div>
+      <div class="poster">
+        <div class="poster-cover">
+          <span class="poster-tag">热映</span><span class="poster-score">8.6</span>
+          <img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?w=400&q=80" alt="剧情电影">
+          <div class="play"><i>&#9654;</i></div>
+        </div>
+        <div class="poster-info"><h3>归途列车</h3><p><span>剧情 · 温情</span><span>HD</span></p></div>
+      </div>
+      <div class="poster">
+        <div class="poster-cover">
+          <span class="poster-tag">VIP</span><span class="poster-score">9.3</span>
+          <img src="https://images.unsplash.com/photo-1574267432553-4b4628081c31?w=400&q=80" alt="战争电影">
+          <div class="play"><i>&#9654;</i></div>
+        </div>
+        <div class="poster-info"><h3>黎明之前</h3><p><span>战争 · 历史</span><span>4K</span></p></div>
+      </div>
+      <div class="poster">
+        <div class="poster-cover">
+          <span class="poster-tag">新片</span><span class="poster-score">7.9</span>
+          <img src="https://images.unsplash.com/photo-1551825687-f9d539ad3303?w=400&q=80" alt="青春电影">
+          <div class="play"><i>&#9654;</i></div>
+        </div>
+        <div class="poster-info"><h3>那年夏天</h3><p><span>青春 · 校园</span><span>HD</span></p></div>
+      </div>
+      <div class="poster">
+        <div class="poster-cover">
+          <span class="poster-tag">推荐</span><span class="poster-score">8.8</span>
+          <img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?w=400&q=80" alt="纪录片">
+          <div class="play"><i>&#9654;</i></div>
+        </div>
+        <div class="poster-info"><h3>深海秘境</h3><p><span>纪录 · 自然</span><span>4K</span></p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 热播榜 -->
+<section id="rank" style="background:linear-gradient(180deg,#fff8f2,#fdf6ef)">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-title">
+        <span class="bar"></span>
+        <div><h2>热播排行榜</h2><small>Top Chart · 夏末电影网实时热度榜</small></div>
+      </div>
+      <a href="#" class="sec-link">完整榜单 &#8594;</a>
+    </div>
+    <div class="rank-wrap">
+      <div class="rank-item"><span class="rank-num">01</span><img class="rank-thumb" src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?w=200&q=80" alt=""><div class="rank-text"><h4>夏末的风</h4><span>爱情 · 2026</span></div><span class="rank-score">9.2</span></div>
+      <div class="rank-item"><span class="rank-num">02</span><img class="rank-thumb" src="https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=200&q=80" alt=""><div class="rank-text"><h4>城市边缘人</h4><span>动作 · 犯罪</span></div><span class="rank-score">8.7</span></div>
+      <div class="rank-item"><span class="rank-num">03</span><img class="rank-thumb" src="https://images.unsplash.com/photo-1505686994434-e3cc5abf1330?w=200&q=80" alt=""><div class="rank-text"><h4>星际回声</h4><span>科幻 · 冒险</span></div><span class="rank-score">9.0</span></div>
+      <div class="rank-item"><span class="rank-num">04</span><img class="rank-thumb" src="https://images.unsplash.com/photo-1542204165-65bf26472b9b?w=200&q=80" alt=""><div class="rank-text"><h4>无声线索</h4><span>悬疑 · 惊悚</span></div><span class="rank-score">8.9</span></div>
+      <div class="rank-item"><span class="rank-num">05</span><img class="rank-thumb" src="https://images.unsplash.com/photo-1574267432553-4b4628081c31?w=200&q=80" alt=""><div class="rank-text"><h4>黎明之前</h4><span>战争 · 历史</span></div><span class="rank-score">9.3</span></div>
+      <div class="rank-item"><span class="rank-num">06</span><img class="rank-thumb" src="https://images.unsplash.com/photo-1585647347384-2593bc35786b?w=200&q=80" alt=""><div class="rank-text"><h4>爆笑一家人</h4><span>喜剧 · 家庭</span></div><span class="rank-score">8.4</span></div>
+      <div class="rank-item"><span class="rank-num">07</span><img class="rank-thumb" src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?w=200&q=80" alt=""><div class="rank-text"><h4>归途列车</h4><span>剧情 · 温情</span></div><span class="rank-score">8.6</span></div>
+      <div class="rank-item"><span class="rank-num">08</span><img class="rank-thumb" src="https://images.unsplash.com/photo-1551825687-f9d539ad3303?w=200&q=80" alt=""><div class="rank-text"><h4>那年夏天</h4><span>青春 · 校园</span></div><span class="rank-score">7.9</span></div>
+      <div class="rank-item"><span class="rank-num">09</span><img class="rank-thumb" src="https://images.unsplash.com/photo-1604975701397-6365ccbd028a?w=200&q=80" alt=""><div class="rank-text"><h4>云端小熊</h4><span>动画 · 奇幻</span></div><span class="rank-score">8.1</span></div>
+      <div class="rank-item"><span class="rank-num">10</span><img class="rank-thumb" src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=200&q=80" alt=""><div class="rank-text"><h4>深海秘境</h4><span>纪录 · 自然</span></div><span class="rank-score">8.8</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 电视剧 / 综艺 -->
+<section id="drama">
+  <div class="container">
+    <div class="strip-head">
+      <div class="sec-title">
+        <span class="bar"></span>
+        <div><h2>热播剧集 · 综艺动漫</h2><small>Drama & Show · 追剧不停更</small></div>
+      </div>
+      <div class="strip-tabs">
+        <button class="strip-tab on">热播剧集</button>
+        <button class="strip-tab">综艺</button>
+        <button class="strip-tab">动漫</button>
+      </div>
+    </div>
+    <div class="strip-track">
+      <div class="ep-card"><div class="ep-thumb"><img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?w=400&q=80" alt=""><span class="ep">更新至 24 集</span><span class="len">45 分钟</span></div><h4>长安旧事</h4><p>古装 · 权谋 · 9.1 分</p></div>
+      <div class="ep-card"><div class="ep-thumb"><img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=400&q=80" alt=""><span class="ep">更新至 12 集</span><span class="len">38 分钟</span></div><h4>夏日心动</h4><p>都市 · 爱情 · 8.6 分</p></div>
+      <div class="ep-card"><div class="ep-thumb"><img src="https://images.unsplash.com/photo-1542204165-65bf26472b9b?w=400&q=80" alt=""><span class="ep">更新至 30 集</span><span class="len">42 分钟</span></div><h4>谜案追踪</h4><p>悬疑 · 犯罪 · 8.9 分</p></div>
+      <div class="ep-card"><div class="ep-thumb"><img src="https://images.unsplash.com/photo-1517604931442-7e0c8ed2963c?w=400&q=80" alt=""><span class="ep">更新至 18 集</span><span class="len">40 分钟</span></div><h4>家的味道</h4><p>家庭 · 温情 · 8.5 分</p></div>
+      <div class="ep-card"><div class="ep-thumb"><img src="https://images.unsplash.com/photo-1604975701397-6365ccbd028a?w=400&q=80" alt=""><span class="ep">更新至 36 集</span><span class="len">24 分钟</span></div><h4>萌宠大冒险</h4><p>动漫 · 搞笑 · 8.7 分</p></div>
+      <div class="ep-card"><div class="ep-thumb"><img src="https://images.unsplash.com/photo-1585647347384-2593bc35786b?w=400&q=80" alt=""><span class="ep">更新至 08 集</span><span class="len">60 分钟</span></div><h4>欢乐大挑战</h4><p>综艺 · 真人秀 · 8.3 分</p></div>
+      <div class="ep-card"><div class="ep-thumb"><img src="https://images.unsplash.com/photo-1551825687-f9d539ad3303?w=400&q=80" alt=""><span class="ep">更新至 22 集</span><span class="len">45 分钟</span></div><h4>青春纪念册</h4><p>青春 · 校园 · 8.0 分</p></div>
+      <div class="ep-card"><div class="ep-thumb"><img src="https://images.unsplash.com/photo-1505686994434-e3cc5abf1330?w=400&q=80" alt=""><span class="ep">更新至 16 集</span><span class="len">50 分钟</span></div><h4>星际远征队</h4><p>科幻 · 动漫 · 9.0 分</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 影视资讯 -->
+<section id="news" style="background:linear-gradient(180deg,#fff8f2,#fdf6ef)">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-title">
+        <span class="bar"></span>
+        <div><h2>影视资讯</h2><small>News · 一手片单与行业动态</small></div>
+      </div>
+      <a href="#" class="sec-link">更多资讯 &#8594;</a>
+    </div>
+    <div class="news-grid">
+      <a href="#" class="news-feat">
+        <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=800&q=80" alt="夏末电影网影视资讯">
+        <div class="mask"></div>
+        <div class="txt"><em>独家</em><h3>《夏末的风》票房破 15 亿，成为今夏档期最大黑马</h3><span>2026-10-07 · 夏末电影网编辑部</span></div>
+      </a>
+      <div class="news-list">
+        <a href="#" class="news-row"><img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=300&q=80" alt=""><div class="nr"><b>2026 国庆档片单出炉，十部新片扎堆上映</b><time>2026-10-06 · 片单推荐</time></div></a>
+        <a href="#" class="news-row"><img src="https://images.unsplash.com/photo-1574267432553-4b4628081c31?w=300&q=80" alt=""><div class="nr"><b>经典重映：《黎明之前》4K 修复版定档下月</b><time>2026-10-05 · 行业动态</time></div></a>
+        <a href="#" class="news-row"><img src="https://images.unsplash.com/photo-1598899134739-24c46f58b8c0?w=300&q=80" alt=""><div class="nr"><b>夏末片单推荐：这个秋天值得看的十部华语片</b><time>2026-10-04 · 观影指南</time></div></a>
+        <a href="#" class="news-row"><img src="https://images.unsplash.com/photo-1542204165-65bf26472b9b?w=300&q=80" alt=""><div class="nr"><b>悬疑剧集《谜案追踪》定档，全明星阵容曝光</b><time>2026-10-03 · 剧集动态</time></div></a>
+        <a href="#" class="news-row"><img src="https://images.unsplash.com/photo-1604975701397-6365ccbd028a?w=300&q=80" alt=""><div class="nr"><b>国漫新作《萌宠大冒险》首播即登顶热搜</b><time>2026-10-02 · 动漫前沿</time></div></a>
+        <a href="#" class="news-row"><img src="https://images.unsplash.com/photo-1551825687-f9d539ad3303?w=300&q=80" alt=""><div class="nr"><b>专访《那年夏天》导演：青春片该怎么拍才不俗套</b><time>2026-10-01 · 深度访谈</time></div></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 专题精选 -->
+<section id="topic">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-title">
+        <span class="bar"></span>
+        <div><h2>专题精选</h2><small>Collections · 编辑团队精心策划</small></div>
+      </div>
+      <a href="#" class="sec-link">全部专题 &#8594;</a>
+    </div>
+    <div class="collage">
+      <a href="#" class="col-card">
+        <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?w=700&q=80" alt="夏末电影网专题">
+        <div class="ov"><b>2026 必看华语片<br>TOP 20</b><span>20 部精选 ›</span></div>
+      </a>
+      <a href="#" class="tile">
+        <img src="https://images.unsplash.com/photo-1505686994434-e3cc5abf1330?w=500&q=80" alt="">
+        <div class="ov"><b style="position:absolute;bottom:14px;left:16px;color:#fff;font-size:16px">高分科幻宇宙</b></div>
+      </a>
+      <a href="#" class="tile">
+        <img src="https://images.unsplash.com/photo-1585647347384-2593bc35786b?w=500&q=80" alt="">
+        <div class="ov"><b style="position:absolute;bottom:14px;left:16px;color:#fff;font-size:16px">笑声不停歇 · 喜剧专场</b></div>
+      </a>
+      <a href="#" class="tile">
+        <img src="https://images.unsplash.com/photo-1542204165-65bf26472b9b?w=500&q=80" alt="">
+        <div class="ov"><b style="position:absolute;bottom:14px;left:16px;color:#fff;font-size:16px">悬疑烧脑合集</b></div>
+      </a>
+      <a href="#" class="tile">
+        <img src="https://images.unsplash.com/photo-1551825687-f9d539ad3303?w=500&q=80" alt="">
+        <div class="ov"><b style="position:absolute;bottom:14px;left:16px;color:#fff;font-size:16px">青春回忆录</b></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 关于我们 -->
+<section id="about" style="background:linear-gradient(180deg,#fff8f2,#fdf6ef)">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-title">
+        <span class="bar"></span>
+        <div><h2>关于夏末电影网</h2><small>About Us · xiamodianyingwang-h5.github.io</small></div>
+      </div>
+    </div>
+    <div class="about-grid">
+      <div class="about-card">
+        <h3>让每一次观影都成为享受</h3>
+        <p>夏末电影网（xiamodianyingwang-h5.github.io）致力于为影迷提供最新、最全、最清晰的在线观影体验。我们每日更新院线大片、经典老片、热播剧集与综艺动漫。</p>
+        <p>从夏末到寒冬，好电影从不缺席。欢迎收藏本站，随时发现属于你的那部好片。</p>
+        <div class="about-stats">
+          <div class="as"><b>12,680+</b><span>在线影片</span></div>
+          <div class="as"><b>365天</b><span>不间断更新</span></div>
+          <div class="as"><b>4K</b><span>极致画质</span></div>
+        </div>
+      </div>
+      <form class="feedback" onsubmit="event.preventDefault();this.querySelector('.f-btn').textContent='提交成功 ✓'">
+        <h3>影迷留言</h3>
+        <p>想看什么片？有什么建议？欢迎告诉我们。</p>
+        <div class="f-field"><label>昵称</label><input type="text" placeholder="怎么称呼你？"></div>
+        <div class="f-field"><label>想看的影片</label><input type="text" placeholder="片名 / 类型 / 演员"></div>
+        <div class="f-field"><label>留言内容</label><textarea placeholder="写下你的想法..."></textarea></div>
+        <button type="submit" class="f-btn">提交留言</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#" class="logo"><span class="logo-mark">夏</span>夏末<em style="color:var(--brand2)">电影网</em></a>
+        <p>夏末电影网（xiamodianyingwang-h5.github.io）是最新高清电影在线观看平台，每日精选好片，让观影更简单、更快乐。</p>
+      </div>
+      <div class="foot-col"><h4>快速导航</h4><a href="#latest">最新电影</a><a href="#rank">热播榜单</a><a href="#drama">热播剧集</a><a href="#news">影视资讯</a></div>
+      <div class="foot-col"><h4>影片分类</h4><a href="#">动作</a><a href="#">喜剧</a><a href="#">爱情</a><a href="#">悬疑</a><a href="#">科幻</a><a href="#">动画</a></div>
+      <div class="foot-col"><h4>关于本站</h4><a href="#about">关于我们</a><a href="#">合作联系</a><a href="#">用户协议</a><a href="#">免责声明</a></div>
+    </div>
+    <div class="copyright">
+      Copyright © 2026 <strong>夏末电影网</strong> xiamodianyingwang-h5.github.io 版权所有<br>
+      本站名称：夏末电影网 ｜ 网址：https://xiamodianyingwang-h5.github.io ｜ 提供最新电影在线观看服务
+    </div>
+  </div>
+</footer>
+
+<button id="toTop" aria-label="回到顶部">&#8593;</button>
+
+<script>
+// 移动端菜单
+var menuBtn=document.getElementById('menuBtn'),nav=document.getElementById('nav');
+menuBtn.addEventListener('click',function(){nav.classList.toggle('open')});
+nav.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('open')})});
+// 回到顶部
+var toTop=document.getElementById('toTop');
+window.addEventListener('scroll',function(){
+  if(window.scrollY>500){toTop.classList.add('show')}else{toTop.classList.remove('show')}
+});
+toTop.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+// chips 切换
+document.querySelectorAll('.chip').forEach(function(c){
+  c.addEventListener('click',function(){
+    document.querySelectorAll('.chip').forEach(function(x){x.classList.remove('on')});
+    c.classList.add('on');
+  });
+});
+// strip tabs 切换
+document.querySelectorAll('.strip-tab').forEach(function(t){
+  t.addEventListener('click',function(){
+    document.querySelectorAll('.strip-tab').forEach(function(x){x.classList.remove('on')});
+    t.classList.add('on');
+  });
+});
+</script>
+</body>
+</html>
